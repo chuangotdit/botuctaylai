@@ -567,7 +567,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
       "name": "Vững Lái — Bổ túc tay lái Thái Bình",
       "description": "Dịch vụ bổ túc tay lái ô tô 1 kèm 1 tại Thái Bình, dành cho người đã có giấy phép lái xe nhưng chưa tự tin cầm vô lăng.",
       "url": "https://vunglai.vn/",
-      "telephone": "0364642223",
+      "telephone": "+84364642223",
       "email": "lienhe@vunglai.vn",
       "image": "https://vunglai.vn/anh-chia-se.jpg",
       "priceRange": "230.000đ - 3.200.000đ",
@@ -1231,8 +1231,6 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
     var target = window.scrollY + r.top - (window.innerHeight / 2) + (r.height / 2);
     window.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
 
-    // đặt con trỏ mà không để trình duyệt tự kéo lệch đi
-    try { ten.focus({preventScroll:true}); } catch(e){ ten.focus(); }
     ten.classList.add('aim');
     setTimeout(function(){ ten.classList.remove('aim'); }, 2400);
   }

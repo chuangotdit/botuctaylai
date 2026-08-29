@@ -3,8 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vững Lái — Bổ túc tay lái ô tô 1 thầy 1 trò tại Thái Bình</title>
-<meta name="description" content="Bổ túc tay lái ô tô tại Thái Bình. Học 1 thầy 1 trò, xe số sàn và số tự động, từ bãi tập đến đường phố thành phố Thái Bình và Quốc lộ 10. Nhận học viên toàn tỉnh.">
+<title>Bổ túc tay lái ô tô Thái Bình | Kèm lái 1 kèm 1 tại nhà — 0972 257 090</title>
+<meta name="description" content="Bổ túc tay lái ô tô tại Thái Bình cho người đã có bằng. Kèm 1 thầy 1 trò, xe số sàn và số tự động, đón tận nhà. Trọn gói 5 buổi 2.400.000đ. Nhận cả Vũ Thư, Kiến Xương, Đông Hưng, Tiền Hải. Gọi 0972 257 090.">
+<meta name="keywords" content="bổ túc tay lái Thái Bình, kèm lái ô tô Thái Bình, học lái xe ô tô Thái Bình, bổ túc tay lái Vũ Thư, bổ túc tay lái Kiến Xương, thuê xe tập lái Thái Bình">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Vững Lái Thái Bình">
+<link rel="canonical" href="https://vunglai.vn/">
+
+<!-- vị trí phục vụ -->
+<meta name="geo.region" content="VN-20">
+<meta name="geo.placename" content="Thái Bình">
+<meta name="geo.position" content="20.4463;106.3366">
+<meta name="ICBM" content="20.4463, 106.3366">
+
+<!-- chia sẻ Facebook, Zalo -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:site_name" content="Vững Lái Thái Bình">
+<meta property="og:url" content="https://vunglai.vn/">
+<meta property="og:title" content="Bổ túc tay lái ô tô Thái Bình — Kèm lái 1 kèm 1 tại nhà">
+<meta property="og:description" content="Dành cho người đã có bằng nhưng chưa dám lái. 5 buổi từ đường vắng đến giờ cao điểm cầu Bo. Đón tận nhà, nhận cả các huyện. Gọi 0972 257 090.">
+<meta property="og:image" content="https://vunglai.vn/anh-chia-se.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bổ túc tay lái ô tô Thái Bình — Kèm lái 1 kèm 1">
+<meta name="twitter:description" content="Người đã có bằng, 5 buổi là tự tin ra phố. Đón tận nhà tại Thái Bình.">
+<meta name="twitter:image" content="https://vunglai.vn/anh-chia-se.jpg">
+<meta name="theme-color" content="#15191C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -34,6 +60,7 @@
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:86px}
 body{
   font-family:var(--body);
   background:var(--concrete);
@@ -288,7 +315,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
 .route-sec{background:var(--asphalt);color:var(--concrete)}
 .route-sec h2{color:var(--line-white)}
 .route-sec .lede{color:#A9B2BB}
-.route{margin-top:52px;position:relative;padding-left:76px}
+.route{margin-top:52px;position:relative;padding-left:76px;--lane:27px}
 .route::before{
   content:"";position:absolute;left:0;top:0;bottom:0;width:52px;
   background:var(--asphalt-soft);border-left:2px solid rgba(255,255,255,.16);border-right:2px solid rgba(255,255,255,.16);
@@ -306,7 +333,48 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
   font-family:var(--mono);font-weight:700;font-size:.95rem;
   border:3px solid var(--asphalt);
 }
-.stop h3{color:var(--line-white);font-size:1.35rem}
+/* vệt đường sáng lên phía sau xe */
+.route-fill{
+  position:absolute;left:var(--lane);top:0;width:5px;height:0;
+  transform:translateX(-50%);z-index:2;pointer-events:none;
+  background:repeating-linear-gradient(180deg,var(--warn-yellow) 0 26px,transparent 26px 56px);
+  filter:drop-shadow(0 0 7px rgba(255,196,0,.85));
+  transition:height .12s linear;
+}
+/* quầng sáng loang ra mặt nhựa hai bên vệt */
+.route-glow{
+  position:absolute;left:var(--lane);top:0;width:52px;height:0;
+  transform:translateX(-50%);z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,196,0,.03),rgba(255,196,0,.16));
+  transition:height .12s linear;
+}
+
+/* xe chạy dọc lộ trình theo thao tác cuộn */
+.route-car{
+  position:absolute;left:var(--lane);top:0;width:40px;height:64px;
+  transform:translate(-50%,-50%);z-index:4;pointer-events:none;
+  transition:top .12s linear;
+}
+.route-car svg{width:100%;height:100%;display:block;overflow:visible;
+  filter:drop-shadow(0 0 12px rgba(255,196,0,.55))}
+.route-car .rc-beam{animation:rc-beam 2.4s ease-in-out infinite}
+@keyframes rc-beam{0%,100%{opacity:.45}50%{opacity:.9}}
+
+/* mốc buổi: chưa tới thì mờ, xe đi qua thì sáng lên */
+.stop-km{
+  background:#4A5158;color:#9AA3AC;border-color:var(--asphalt);
+  transition:background .35s ease,color .35s ease,transform .35s ease,box-shadow .35s ease;
+}
+.stop.passed .stop-km{
+  background:var(--warn-yellow);color:var(--ink);
+  transform:scale(1.07);box-shadow:0 0 0 5px rgba(255,196,0,.18);
+}
+.stop{transition:opacity .4s ease}
+.stop h3{color:var(--line-white);font-size:1.35rem;transition:text-shadow .4s ease}
+.stop.active h3{text-shadow:0 0 18px rgba(255,196,0,.55)}
+.stop li{transition:border-color .4s ease,color .4s ease,background .4s ease}
+.stop.active li{border-color:rgba(255,196,0,.75);color:var(--warn-yellow);background:rgba(255,196,0,.08)}
+.stop.active .stop-time{color:#fff}
 .stop-time{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--warn-yellow);margin-bottom:7px}
 .stop p{color:#A9B2BB;max-width:60ch;margin-top:8px}
 .stop ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
@@ -319,6 +387,8 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
   .route::before{width:40px}
   .route::after{left:19px}
   .stop-km{left:-60px;width:42px;height:42px;font-size:.8rem}
+  .route{--lane:21px}
+  .route-car{width:30px;height:48px}
 }
 
 /* ---------- pricing ---------- */
@@ -336,6 +406,19 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
 .plan.featured .plan-tag{color:var(--warn-yellow)}
 .amount{font-family:var(--display);font-weight:900;font-size:2.3rem;letter-spacing:-.03em;margin-top:16px;line-height:1}
 .amount small{font-family:var(--body);font-weight:500;font-size:.85rem;letter-spacing:0;opacity:.7}
+.unit{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;
+  color:var(--ink-soft);margin-top:9px;
+}
+.plan.featured .unit{color:rgba(255,255,255,.8)}
+.save{
+  display:inline-flex;align-items:center;gap:7px;margin-top:12px;
+  font-family:var(--display);font-weight:700;font-size:.86rem;
+  background:var(--warn-yellow);color:var(--ink);
+  padding:6px 12px;border-radius:20px;
+}
+.save::before{content:"";width:8px;height:8px;background:var(--stop-red);transform:rotate(45deg);flex:none}
+.plan.featured .save{background:#fff}
 .plan ul{list-style:none;margin:22px 0 26px;display:grid;gap:11px}
 .plan li{display:flex;gap:10px;font-size:.94rem;align-items:flex-start}
 .plan li::before{content:"";width:9px;height:9px;margin-top:8px;flex:none;background:var(--warn-yellow);transform:rotate(45deg)}
@@ -398,6 +481,14 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
   display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px;
 }
+.field input.aim{
+  border-color:var(--stop-red);
+  animation:aim-pulse 1.1s ease-out 2;
+}
+@keyframes aim-pulse{
+  0%{box-shadow:0 0 0 0 rgba(196,43,40,.45)}
+  100%{box-shadow:0 0 0 12px rgba(196,43,40,0)}
+}
 .field input,.field select,.field textarea{
   width:100%;font-family:var(--body);font-size:1rem;padding:13px 14px;
   border:2px solid var(--asphalt);border-radius:var(--r);background:#fff;color:var(--ink);
@@ -454,6 +545,8 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
   .car .wheel{animation:none}
   .roof-sign{animation:none;filter:drop-shadow(0 0 6px rgba(255,196,0,.7))}
   .beam,.halo,.tail-glow{animation:none;opacity:.85}
+  .route-car,.route-fill,.route-glow{display:none}
+  .stop-km{background:var(--warn-yellow);color:var(--ink)}
   .car.go{transform:translateX(14vw)}
   .car.onc{transform:translateX(58vw) scaleX(-1)}
   .car.sedan,.car.teal{display:none}
@@ -463,6 +556,91 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
   .brand:hover .brand-mark,.brand:active .brand-mark{transform:none}
 }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "DrivingSchool"],
+      "@id": "https://vunglai.vn/#business",
+      "name": "Vững Lái — Bổ túc tay lái Thái Bình",
+      "description": "Dịch vụ bổ túc tay lái ô tô 1 kèm 1 tại Thái Bình, dành cho người đã có giấy phép lái xe nhưng chưa tự tin cầm vô lăng.",
+      "url": "https://vunglai.vn/",
+      "telephone": "+84972257090",
+      "email": "lienhe@vunglai.vn",
+      "image": "https://vunglai.vn/anh-chia-se.jpg",
+      "priceRange": "230.000đ - 3.200.000đ",
+      "currenciesAccepted": "VND",
+      "paymentAccepted": "Tiền mặt, Chuyển khoản",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Thành phố Thái Bình",
+        "addressRegion": "Thái Bình",
+        "addressCountry": "VN"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 20.4463, "longitude": 106.3366 },
+      "areaServed": [
+        { "@type": "City", "name": "Thành phố Thái Bình" },
+        { "@type": "AdministrativeArea", "name": "Vũ Thư" },
+        { "@type": "AdministrativeArea", "name": "Kiến Xương" },
+        { "@type": "AdministrativeArea", "name": "Đông Hưng" },
+        { "@type": "AdministrativeArea", "name": "Hưng Hà" },
+        { "@type": "AdministrativeArea", "name": "Quỳnh Phụ" },
+        { "@type": "AdministrativeArea", "name": "Tiền Hải" },
+        { "@type": "AdministrativeArea", "name": "Thái Thụy" }
+      ],
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "06:00", "closes": "21:00"
+      }],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Gói bổ túc tay lái",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Học thử theo giờ", "price": "280000", "priceCurrency": "VND",
+            "description": "Học lẻ theo giờ, tối thiểu 2 giờ mỗi buổi, trừ vào gói nếu học tiếp." },
+          { "@type": "Offer", "name": "Gói tự tin ra phố — 10 giờ", "price": "2400000", "priceCurrency": "VND",
+            "description": "5 buổi, mỗi buổi 2 giờ, từ đường vắng đến giờ cao điểm." },
+          { "@type": "Offer", "name": "Gói đường trường & đi tỉnh — 14 giờ", "price": "3200000", "priceCurrency": "VND",
+            "description": "Toàn bộ 5 buổi cơ bản cộng Quốc lộ 10, đường ven biển và một chuyến đường dài." }
+        ]
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://vunglai.vn/#service",
+      "serviceType": "Bổ túc tay lái ô tô",
+      "provider": { "@id": "https://vunglai.vn/#business" },
+      "areaServed": { "@type": "AdministrativeArea", "name": "Tỉnh Thái Bình" },
+      "audience": { "@type": "Audience", "audienceType": "Người đã có giấy phép lái xe ô tô" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://vunglai.vn/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "Chưa có bằng lái thì học được không?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bổ túc tay lái chỉ dành cho người đã có giấy phép lái xe. Nếu bạn chưa có, cần đăng ký khóa thi sát hạch trước, sau đó quay lại bổ túc thực tế." } },
+        { "@type": "Question", "name": "Học bao nhiêu buổi thì tự lái được?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Phần lớn người đã có bằng cần đúng 5 buổi là tự đi phố một mình được. Ai sợ xe hoặc bỏ lái nhiều năm thì thêm 1 đến 2 buổi." } },
+        { "@type": "Question", "name": "Tôi muốn học bằng chính xe nhà mình?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Được, và học phí giảm 30.000đ mỗi giờ. Xe cần còn hạn đăng kiểm, bảo hiểm và bạn là người đứng tên hoặc được chủ xe đồng ý." } },
+        { "@type": "Question", "name": "Nhận kèm ở khu vực nào của Thái Bình?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bãi tập ở thành phố Thái Bình. Phần đường phố đón tận nhà trong thành phố. Học viên ở Vũ Thư, Kiến Xương, Đông Hưng, Hưng Hà, Quỳnh Phụ, Tiền Hải, Thái Thụy đều nhận." } }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://vunglai.vn/#website",
+      "url": "https://vunglai.vn/",
+      "name": "Vững Lái Thái Bình",
+      "inLanguage": "vi-VN",
+      "publisher": { "@id": "https://vunglai.vn/#business" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -498,7 +676,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
     <div class="hero-grid">
       <div>
         <p class="eyebrow">Bằng đã có · Tay lái thì chưa</p>
-        <h1>Lên xe mà tay <span class="hl">không còn run</span>.</h1>
+        <h1>Bổ túc tay lái ô tô Thái Bình — lên xe mà tay <span class="hl">không còn run</span></h1>
         <p class="lede">Bổ túc tay lái 1 thầy 1 trò tại Thái Bình. Bạn chọn giờ, chọn xe số sàn hay số tự động, chọn cung đường muốn tập. Thầy đi cùng từ bãi tập đến lúc bạn tự tin cầm lái đưa gia đình đi chơi.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#dangky">Đặt buổi học đầu tiên</a>
@@ -510,31 +688,32 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
           <span>Đón tận nhà</span>
           <span>Học phí trọn gói</span>
         </div>
+        <p style="margin-top:18px;font-size:.92rem;color:var(--ink-soft)">Nhận kèm tại thành phố Thái Bình và các huyện Vũ Thư, Kiến Xương, Đông Hưng, Hưng Hà, Quỳnh Phụ, Tiền Hải, Thái Thụy.</p>
       </div>
 
       <!-- signature: guide sign -->
-      <div class="guide-sign" role="img" aria-label="Biển chỉ dẫn các nội dung học: côn ga số, đề pa lên dốc, ghép dọc ghép ngang, đường phố giờ tan tầm, quốc lộ và đường trường">
+      <div class="guide-sign" role="img" aria-label="Biển chỉ dẫn các nội dung học: lái thử đánh giá, lùi ngõ và đỗ dọc lề, ra phố rồi vào giờ cao điểm, tự lái đường đi làm hằng ngày">
         <div class="sign-inner">
           <p class="sign-title">Bạn muốn đi tới đâu?</p>
           <div class="sign-row">
-            <span class="dest">Làm quen côn – ga – số</span>
+            <span class="dest">Lái thử, xem bạn đang ở đâu</span>
             <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
             <span class="km">Buổi 1</span>
           </div>
           <div class="sign-row">
-            <span class="dest">Đề pa lên dốc, ghép ngang</span>
+            <span class="dest">Lùi ngõ, đỗ dọc lề</span>
             <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
             <span class="km">Buổi 2</span>
           </div>
           <div class="sign-row">
-            <span class="dest">Phố Lê Quý Đôn, chợ Bo</span>
+            <span class="dest">Ra phố, rồi vào giờ cao điểm</span>
             <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V6M6 11l6-6 6 6"/></svg>
             <span class="km">Buổi 3–4</span>
           </div>
           <div class="sign-row">
-            <span class="dest">Quốc lộ 10, cầu Tân Đệ</span>
+            <span class="dest">Đường bạn đi làm mỗi ngày</span>
             <svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V6M6 11l6-6 6 6"/></svg>
-            <span class="km">Buổi 5+</span>
+            <span class="km">Buổi 5</span>
           </div>
         </div>
       </div>
@@ -688,36 +867,69 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
       </div>
 
       <div class="route">
+        <div class="route-glow" aria-hidden="true"></div>
+        <div class="route-fill" aria-hidden="true"></div>
+        <div class="route-car" aria-hidden="true">
+          <svg viewBox="0 0 40 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="rc-beam-g" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0" stop-color="#FFE9A8" stop-opacity=".75"/>
+                <stop offset="1" stop-color="#FFE9A8" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path class="rc-beam" d="M9 8 L1 -22 L39 -22 L31 8 Z" fill="url(#rc-beam-g)"/>
+            <rect x="1.5" y="14" width="5" height="12" rx="2" fill="#101418"/>
+            <rect x="33.5" y="14" width="5" height="12" rx="2" fill="#101418"/>
+            <rect x="1.5" y="40" width="5" height="12" rx="2" fill="#101418"/>
+            <rect x="33.5" y="40" width="5" height="12" rx="2" fill="#101418"/>
+            <rect x="5" y="6" width="30" height="54" rx="9" fill="var(--warn-yellow)"/>
+            <path d="M11 16h18l2.5 9H8.5z" fill="#0F1418" opacity=".55"/>
+            <path d="M9.5 44h21l-2 7h-17z" fill="#0F1418" opacity=".4"/>
+            <rect x="12" y="28" width="16" height="12" rx="2.5" fill="#C42B28"/>
+            <rect x="9" y="7" width="6" height="3.5" rx="1.6" fill="#FFF3CC"/>
+            <rect x="25" y="7" width="6" height="3.5" rx="1.6" fill="#FFF3CC"/>
+            <rect x="9" y="55.5" width="6" height="3" rx="1.4" fill="#C4362F"/>
+            <rect x="25" y="55.5" width="6" height="3" rx="1.4" fill="#C4362F"/>
+          </svg>
+        </div>
         <article class="stop rv">
-          <span class="stop-km">KM 1</span>
-          <p class="stop-time">Buổi 1 · 2 giờ · Bãi tập</p>
-          <h3>Làm chủ chiếc xe khi nó đứng yên</h3>
-          <p>Chỉnh ghế, chỉnh gương, nhớ vị trí chân côn – chân phanh – chân ga bằng phản xạ chứ không bằng mắt. Cho xe bò, dừng, đỗ, trả số. Kết thúc buổi bạn đi được vòng bãi mà không nhìn xuống chân.</p>
-          <ul><li>Điểm mù</li><li>Côn – ga – số</li><li>Phanh dứt khoát</li></ul>
+          <span class="stop-km">B1</span>
+          <p class="stop-time">Buổi 1 · 2 giờ · Đường vắng</p>
+          <h3>Lái ngay, để biết bạn đang ở đâu</h3>
+          <p>Không mất buổi đầu ngồi nghe giảng. Chỉnh ghế chỉnh gương xong là bạn cầm lái luôn ở đoạn đường vắng, người kèm ngồi cạnh quan sát. Hết buổi bạn biết mình yếu chỗ nào, và bốn buổi sau được xếp đúng theo chỗ đó.</p>
+          <ul><li>Làm quen lại xe</li><li>Điểm mù</li><li>Phanh dứt khoát</li></ul>
         </article>
 
         <article class="stop rv">
-          <span class="stop-km">KM 2</span>
-          <p class="stop-time">Buổi 2 · 2 giờ · Bãi tập</p>
-          <h3>Đề pa, ghép dọc, ghép ngang, lùi chuồng</h3>
-          <p>Những bài khiến người mới toát mồ hôi nhất. Thầy chỉ mốc gương cụ thể cho từng dòng xe, bạn lặp lại đến khi vào chuồng gọn trong một lần đánh lái.</p>
-          <ul><li>Đề pa lên dốc</li><li>Ghép ngang</li><li>Canh gương</li></ul>
+          <span class="stop-km">B2</span>
+          <p class="stop-time">Buổi 2 · 2 giờ · Bãi tập &amp; ngõ</p>
+          <h3>Lùi vào ngõ, đỗ dọc lề, quay đầu đường hẹp</h3>
+          <p>Ba việc bạn phải làm gần như mỗi ngày. Người kèm chỉ mốc gương cụ thể cho đúng chiếc xe bạn đi, bạn lặp lại đến khi vào gọn trong một lần đánh lái, không cần tiến lùi nhiều lần.</p>
+          <ul><li>Lùi vào ngõ</li><li>Đỗ dọc lề</li><li>Canh gương</li></ul>
         </article>
 
         <article class="stop rv">
-          <span class="stop-km">KM 3</span>
-          <p class="stop-time">Buổi 3–4 · 2 giờ/buổi · Đường phố</p>
-          <h3>Ra đường thật, giờ thật, xe máy thật</h3>
-          <p>Chuyển làn, nhường đường, qua cầu Bo, vào vòng xuyến, xử lý xe máy tạt đầu ở đoạn Trần Hưng Đạo – Lý Bôn. Bắt đầu từ khu vực thoáng rồi tăng dần độ đông theo sức bạn.</p>
-          <ul><li>Chuyển làn</li><li>Vòng xuyến</li><li>Giờ cao điểm</li></ul>
+          <span class="stop-km">B3</span>
+          <p class="stop-time">Buổi 3 · 2 giờ · Đường phố</p>
+          <h3>Ra phố thật, giờ còn thoáng</h3>
+          <p>Chuyển làn, nhường đường, vào vòng xuyến, giữ khoảng cách, xử lý xe máy tạt đầu. Chọn khung giờ đường còn dễ thở để bạn quen nhịp trước, chưa vội đẩy vào chỗ đông.</p>
+          <ul><li>Chuyển làn</li><li>Vòng xuyến</li><li>Xe máy tạt đầu</li></ul>
         </article>
 
         <article class="stop rv">
-          <span class="stop-km">KM 4</span>
-          <p class="stop-time">Buổi 5+ · Theo nhu cầu</p>
-          <h3>Quốc lộ, đường tỉnh và đúng cung đường bạn hay đi</h3>
-          <p>Tập đúng đường bạn đi làm mỗi ngày, tập lùi xe vào ngõ và sân nhà mình. Chạy Quốc lộ 10 xuống Tiền Hải, qua cầu Tân Đệ sang Nam Định, hoặc chuyến Thái Bình – Hải Phòng, Thái Bình – Hà Nội có thầy ngồi cạnh.</p>
-          <ul><li>Quốc lộ 10</li><li>Đường ven biển</li><li>Ngõ hẹp</li></ul>
+          <span class="stop-km">B4</span>
+          <p class="stop-time">Buổi 4 · 2 giờ · Giờ cao điểm</p>
+          <h3>Vào đúng lúc đông nhất</h3>
+          <p>Cầu Bo giờ tan tầm, đoạn Trần Hưng Đạo – Lý Bôn, chợ Bo lúc người ra vào liên tục. Qua được buổi này thì những ngày thường sau đó bạn thấy nhẹ hẳn.</p>
+          <ul><li>Cầu Bo</li><li>Giờ tan tầm</li><li>Ngã tư đông</li></ul>
+        </article>
+
+        <article class="stop rv">
+          <span class="stop-km">B5</span>
+          <p class="stop-time">Buổi 5 · 2 giờ · Đường của bạn</p>
+          <h3>Tự lái trọn buổi, người kèm chỉ ngồi im</h3>
+          <p>Chạy đúng cung đường bạn đi làm hằng ngày, tự đỗ xe ở chỗ bạn vẫn đỗ, tự lùi vào sân nhà mình. Người kèm không nhắc gì trừ khi thật cần. Về nhà là bạn dùng được luôn, không phải tập lại.</p>
+          <ul><li>Đường đi làm</li><li>Sân nhà</li><li>Tự lái toàn bộ</li></ul>
         </article>
       </div>
     </div>
@@ -735,7 +947,8 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
       <article class="plan rv">
         <p class="plan-tag">Gói lẻ</p>
         <h3>Học thử theo giờ</h3>
-        <p class="amount">230.000đ <small>/ giờ</small></p>
+        <p class="amount">280.000đ <small>/ giờ</small></p>
+        <p class="unit">Giá gốc, chưa ưu đãi theo gói</p>
         <ul>
           <li>Tối thiểu 2 giờ mỗi buổi</li>
           <li>Chọn xe số sàn hoặc số tự động</li>
@@ -748,9 +961,11 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
       <article class="plan featured rv">
         <p class="plan-tag">Được chọn nhiều nhất</p>
         <h3>Gói tự tin ra phố</h3>
-        <p class="amount">2.400.000đ <small>/ 12 giờ</small></p>
+        <p class="amount">2.400.000đ <small>/ 10 giờ</small></p>
+        <p class="unit">240.000đ mỗi giờ</p>
+        <p class="save">Tiết kiệm 400.000đ</p>
         <ul>
-          <li>6 buổi, mỗi buổi 2 giờ</li>
+          <li>5 buổi, mỗi buổi 2 giờ</li>
           <li>Đủ lộ trình từ bãi tập đến phố đông</li>
           <li>Tập đúng cung đường bạn hay đi</li>
           <li>Học bù miễn phí nếu bận đột xuất</li>
@@ -761,10 +976,12 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
 
       <article class="plan rv">
         <p class="plan-tag">Gói mở rộng</p>
-        <h3>Đường trường &amp; cao tốc</h3>
-        <p class="amount">3.300.000đ <small>/ 18 giờ</small></p>
+        <h3>Đường trường &amp; đi tỉnh</h3>
+        <p class="amount">3.200.000đ <small>/ 14 giờ</small></p>
+        <p class="unit">229.000đ mỗi giờ — rẻ nhất</p>
+        <p class="save">Tiết kiệm 720.000đ</p>
         <ul>
-          <li>Toàn bộ nội dung gói tự tin ra phố</li>
+          <li>Toàn bộ 5 buổi của gói tự tin ra phố</li>
           <li>Thêm Quốc lộ 10, đường ven biển, đi tỉnh</li>
           <li>Tập lùi xe vào ngõ, vào sân nhà bạn</li>
           <li>Kèm 1 chuyến đường dài có thầy đi cùng</li>
@@ -773,7 +990,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
       </article>
     </div>
 
-    <p class="price-foot">Học bằng xe của bạn được giảm 30.000đ/giờ, với điều kiện xe còn hạn đăng kiểm và bảo hiểm. Học viên ở Vũ Thư, Kiến Xương, Đông Hưng, Hưng Hà, Quỳnh Phụ, Tiền Hải, Thái Thụy vẫn học bình thường, thầy báo trước phí di chuyển nếu ngoài 15 km tính từ thành phố.</p>
+    <p class="price-foot">Mức tiết kiệm tính so với giá lẻ 280.000đ mỗi giờ. Học bằng xe của bạn được giảm 30.000đ/giờ, với điều kiện xe còn hạn đăng kiểm và bảo hiểm. Học viên ở Vũ Thư, Kiến Xương, Đông Hưng, Hưng Hà, Quỳnh Phụ, Tiền Hải, Thái Thụy vẫn học bình thường, thầy báo trước phí di chuyển nếu ngoài 15 km tính từ thành phố.</p>
   </section>
 
   <!-- FLEET + PROMISE -->
@@ -812,7 +1029,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
     </div>
     <div class="rev-grid">
       <article class="rev rv">
-        <p>Bằng B2 lấy từ 2019, chưa lái ngày nào. Học 6 buổi, giờ sáng nào cũng tự chở con đi học rồi đi làm trong thành phố.</p>
+        <p>Bằng B2 lấy từ 2019, chưa lái ngày nào. Học 5 buổi, giờ sáng nào cũng tự chở con đi học rồi đi làm trong thành phố.</p>
         <footer>Chị Hằng · TP Thái Bình</footer>
       </article>
       <article class="rev rv">
@@ -839,7 +1056,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
       </details>
       <details>
         <summary>Học bao nhiêu buổi thì tự lái được?</summary>
-        <p>Phần lớn học viên đã có bằng cần 5–6 buổi để tự tin đi phố một mình. Người sợ xe hoặc mất phản xạ lâu năm thường cần thêm 2–3 buổi. Sau buổi đầu thầy sẽ nói thẳng con số phù hợp với bạn.</p>
+        <p>Phần lớn người đã có bằng cần đúng 5 buổi là tự đi phố một mình được. Ai sợ xe hoặc bỏ lái nhiều năm thì thêm 1–2 buổi. Ngay sau buổi đầu bạn sẽ được nói thẳng con số phù hợp với mình, không vẽ thêm.</p>
       </details>
       <details>
         <summary>Tôi muốn học bằng chính xe nhà mình?</summary>
@@ -848,10 +1065,6 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
       <details>
         <summary>Trung tâm dạy ở khu vực nào?</summary>
         <p>Bãi tập ở khu vực thành phố Thái Bình. Phần học đường phố thầy đón bạn tại nhà trong thành phố và tập đúng cung đường bạn đi làm hằng ngày. Học viên ở các huyện Vũ Thư, Kiến Xương, Đông Hưng, Hưng Hà, Quỳnh Phụ, Tiền Hải, Thái Thụy đều nhận, thầy về tận xã.</p>
-      </details>
-      <details>
-        <summary>Đóng học phí thế nào?</summary>
-        <p>Buổi đầu đóng trước 50%, phần còn lại đóng vào buổi thứ hai. Nếu sau buổi đầu bạn thấy không hợp, trung tâm chỉ thu tiền buổi đã học và hoàn phần còn lại.</p>
       </details>
     </div>
   </section>
@@ -908,7 +1121,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
             <option>Có bằng nhưng chưa lái bao giờ</option>
             <option>Lái được trong bãi, chưa dám ra phố</option>
             <option>Đi phố được, còn yếu đỗ xe</option>
-            <option>Muốn tập cao tốc / đường đèo</option>
+            <option>Muốn tập đường dài, đi tỉnh</option>
           </select>
         </div>
         <div class="field">
@@ -1002,6 +1215,83 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
     });
   },{threshold:.14, rootMargin:'0px 0px -40px 0px'});
   els.forEach(function(e){io.observe(e)});
+})();
+
+// ---------- nút đặt lịch: cuộn tới form và trỏ thẳng vào ô Tên ----------
+(function(){
+  var links = document.querySelectorAll('a[href="#dangky"]');
+  if(!links.length) return;
+
+  function aim(){
+    var ten = document.getElementById('ten');
+    if(!ten) return;
+
+    // đưa ô Tên ra đúng giữa màn hình
+    var r = ten.getBoundingClientRect();
+    var target = window.scrollY + r.top - (window.innerHeight / 2) + (r.height / 2);
+    window.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
+
+    ten.classList.add('aim');
+    setTimeout(function(){ ten.classList.remove('aim'); }, 2400);
+  }
+
+  Array.prototype.forEach.call(links, function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();          // bỏ bước nhảy tới #dangky, canh giữa luôn
+      history.replaceState(null, '', '#dangky');
+      aim();
+    });
+  });
+
+  // vào trang thẳng bằng link ...#dangky cũng canh giữa vào ô Tên
+  if(location.hash === '#dangky'){ setTimeout(aim, 350); }
+})();
+
+// ---------- xe chạy dọc lộ trình theo thao tác cuộn ----------
+(function(){
+  var route = document.querySelector('.route');
+  var car = document.querySelector('.route-car');
+  if(!route || !car) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var fill = route.querySelector('.route-fill');
+  var glow = route.querySelector('.route-glow');
+  var stops = Array.prototype.slice.call(route.querySelectorAll('.stop'));
+  var ticking = false;
+
+  function update(){
+    ticking = false;
+    var r = route.getBoundingClientRect();
+    var mid = window.innerHeight * 0.5;
+
+    // 0 khi đỉnh lộ trình chạm giữa màn hình, 1 khi đáy chạm giữa màn hình
+    var p = (mid - r.top) / r.height;
+    p = Math.max(0, Math.min(1, p));
+    var pct = (p * 100) + '%';
+    car.style.top = pct;
+    if(fill) fill.style.height = pct;
+    if(glow) glow.style.height = pct;
+    car.style.opacity = (r.bottom < 0 || r.top > window.innerHeight) ? 0 : 1;
+
+    // buổi nào gần xe nhất thì làm nổi lên
+    var carY = r.top + r.height * p;
+    var best = null, bestD = Infinity;
+    stops.forEach(function(st){
+      var b = st.getBoundingClientRect();
+      st.classList.toggle('passed', carY >= b.top + 26);
+      var d = Math.abs(carY - (b.top + 26));
+      if(d < bestD){ bestD = d; best = st; }
+    });
+    stops.forEach(function(st){ st.classList.toggle('active', st === best && bestD < 160); });
+  }
+
+  function onScroll(){
+    if(!ticking){ ticking = true; requestAnimationFrame(update); }
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  update();
 })();
 
 // ---------- booking form ----------

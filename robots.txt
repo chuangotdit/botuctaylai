@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+Sitemap: https://botuctaylaithaibinh.com/sitemap.xml

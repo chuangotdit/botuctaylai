@@ -24,6 +24,8 @@
 <meta property="og:title" content="Bổ túc tay lái ô tô Thái Bình — Kèm lái 1 kèm 1 tại nhà">
 <meta property="og:description" content="Dành cho người đã có bằng nhưng chưa dám lái. 5 buổi từ đường vắng đến giờ cao điểm cầu Bo. Đón tận nhà, nhận cả các huyện. Gọi 0364 642 223.">
 <meta property="og:image" content="https://botuctaylaithaibinh.com/anh-chia-se.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Bổ túc tay lái ô tô Thái Bình, kèm 1 kèm 1, gọi 0364 642 223">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -485,6 +487,28 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
   display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px;
 }
+/* ô nhập bị thiếu: viền đỏ, nền hồng nhạt, rung nhẹ một cái */
+.field.bad input,.field.bad select,.field.bad textarea{
+  border-color:var(--stop-red);background:#FFF5F4;
+}
+.field.bad{animation:shake .32s ease}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-5px)}
+  75%{transform:translateX(5px)}
+}
+/* dòng báo lỗi ngay dưới ô, không bị bàn phím che */
+.err-line{
+  display:none;margin-top:7px;font-size:.88rem;font-weight:600;
+  color:var(--stop-red);align-items:flex-start;gap:7px;line-height:1.4;
+}
+.err-line::before{
+  content:"!";flex:none;width:17px;height:17px;margin-top:1px;
+  background:var(--stop-red);color:#fff;border-radius:50%;
+  font-family:var(--display);font-size:.72rem;text-align:center;line-height:17px;
+}
+.field.bad .err-line{display:flex}
+
 .field input.aim{
   border-color:var(--stop-red);
   animation:aim-pulse 1.1s ease-out 2;
@@ -667,7 +691,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
       <a href="#hoidap">Hỏi đáp</a>
     </nav>
     <a class="head-cta" href="tel:0364642223">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 006 6L15 14l5 2v4a1 1 0 01-1 1A16 16 0 013 5a1 1 0 011-1z"/>qưe</svg>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 006 6L15 14l5 2v4a1 1 0 01-1 1A16 16 0 013 5a1 1 0 011-1z"/></svg>
       <span>0364 642 223</span>
     </a>
   </div>
@@ -1064,7 +1088,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
       </details>
       <details>
         <summary>Tôi muốn học bằng chính xe nhà mình?</summary>
-        <p>Được, và học phí giảm 40.000đ mỗi giờ. Xe cần còn hạn đăng kiểm, bảo hiểm và bạn là người đứng tên hoặc được chủ xe đồng ý.</p>
+        <p>Được, và học phí giảm 30.000đ mỗi giờ. Xe cần còn hạn đăng kiểm, bảo hiểm và bạn là người đứng tên hoặc được chủ xe đồng ý.</p>
       </details>
       <details>
         <summary>Trung tâm dạy ở khu vực nào?</summary>
@@ -1079,7 +1103,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
       <div class="rv">
         <p class="eyebrow on-dark">Đặt lịch</p>
         <h2>Nói cho thầy biết bạn đang ở đâu</h2>
-        <p class="lede">Điền vài dòng, thầy gọi lại trong 30 phút giờ hành chính để hẹn buổi đầu. Không gọi làm phiền nhiều lần.</p>
+        <p class="lede">Điền vài dòng, thầy gọi lại trong 5 phút giờ hành chính để hẹn buổi đầu. Không gọi làm phiền nhiều lần.</p>
 
         <div class="contact-list">
           <a class="contact-item" href="tel:0364642223">
@@ -1101,11 +1125,13 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
         <div class="field">
           <label for="ten">Tên bạn <span class="req">*</span></label>
           <input id="ten" type="text" placeholder="Nguyễn Thu Hà" autocomplete="name">
+            <p class="err-line" id="e-ten">Bạn điền giúp thầy tên nhé</p>
         </div>
         <div class="two">
           <div class="field">
             <label for="sdt">Số điện thoại <span class="req">*</span></label>
             <input id="sdt" type="tel" placeholder="09xx xxx xxx" autocomplete="tel">
+            <p class="err-line" id="e-sdt">Số điện thoại chưa đúng</p>
           </div>
           <div class="field">
             <label for="loaixe">Loại xe muốn học <span class="req">*</span></label>
@@ -1116,6 +1142,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
               <option>Cả hai / chưa quyết</option>
               <option>Xe của tôi</option>
             </select>
+              <p class="err-line" id="e-loaixe">Bạn chọn loại xe muốn học</p>
           </div>
         </div>
         <div class="field">
@@ -1127,6 +1154,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
             <option>Đi phố được, còn yếu đỗ xe</option>
             <option>Muốn tập đường dài, đi tỉnh</option>
           </select>
+            <p class="err-line" id="e-trinhdo">Bạn chọn mức hiện tại của mình</p>
         </div>
         <div class="field">
           <label for="ghichu">Bạn rảnh giờ nào, ở khu vực nào?</label>
@@ -1328,6 +1356,35 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
   var btn = document.getElementById('send');
   var msg = document.getElementById('msg');
 
+  // đánh dấu ô sai + ghi nội dung lỗi ngay dưới ô đó
+  function markBad(id, text){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var box = el.closest('.field');
+    if(!box) return;
+    box.classList.add('bad');
+    var line = box.querySelector('.err-line');
+    if(line && text) line.textContent = text;
+    el.setAttribute('aria-invalid', 'true');
+  }
+  function clearBad(){
+    Array.prototype.forEach.call(document.querySelectorAll('.field.bad'), function(b){
+      b.classList.remove('bad');
+      var i = b.querySelector('input,select,textarea');
+      if(i) i.removeAttribute('aria-invalid');
+    });
+  }
+  // khách sửa lại thì xoá báo đỏ ngay, không bắt bấm gửi mới biết
+  ['ten','sdt','loaixe','trinhdo'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var ev = el.tagName === 'SELECT' ? 'change' : 'input';
+    el.addEventListener(ev, function(){
+      var box = el.closest('.field');
+      if(box) box.classList.remove('bad');
+    });
+  });
+
   function show(text, kind){
     msg.textContent = text;
     msg.className = 'form-msg show ' + (kind || '');
@@ -1336,7 +1393,7 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
     show('Đường truyền đang lỗi. Bạn gọi thẳng ' + CAU_HINH.PHONE + ' hoặc nhắn Zalo giúp thầy.', 'err');
   }
   function xong(){
-    show('Đã nhận đăng ký của bạn. Thầy gọi lại trong 30 phút giờ hành chính.', 'ok');
+    show('Đã nhận đăng ký của bạn. Thầy gọi lại trong 5 phút giờ hành chính.', 'ok');
     ['ten','sdt','ghichu','loaixe','trinhdo'].forEach(function(id){ document.getElementById(id).value = ''; });
   }
 
@@ -1398,26 +1455,25 @@ h3{font-size:1.22rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
       trang: location.hostname
     };
 
-    if(!d.ten || !d.sdt){
-      show('Cần tên và số điện thoại để thầy gọi lại cho bạn.', 'err');
-      (d.ten ? document.getElementById('sdt') : document.getElementById('ten')).focus();
-      return;
-    }
-    if(!/^[0-9+\s.]{9,15}$/.test(d.sdt)){
-      show('Số điện thoại chưa đúng, bạn kiểm tra lại giúp thầy.', 'err');
-      document.getElementById('sdt').focus();
-      return;
-    }
-    var elXe = document.getElementById('loaixe');
-    if(!elXe.value){
-      show('Bạn chọn giúp thầy loại xe muốn học nhé.', 'err');
-      elXe.focus();
-      return;
-    }
-    var elTd = document.getElementById('trinhdo');
-    if(!elTd.value){
-      show('Bạn cho thầy biết đang ở mức nào để xếp đúng buổi đầu.', 'err');
-      elTd.focus();
+    // ---- kiểm tra: báo lỗi ngay dưới từng ô, không bật bàn phím ----
+    clearBad();
+    var loi_ = [];
+    if(!d.ten)                                   loi_.push(['ten', 'Bạn điền giúp thầy tên nhé']);
+    if(!d.sdt)                                   loi_.push(['sdt', 'Bạn điền số điện thoại để thầy gọi lại']);
+    else if(!/^[0-9+\s.]{9,15}$/.test(d.sdt))    loi_.push(['sdt', 'Số điện thoại chưa đúng, bạn xem lại giúp thầy']);
+    if(!document.getElementById('loaixe').value) loi_.push(['loaixe', 'Bạn chọn loại xe muốn học']);
+    if(!document.getElementById('trinhdo').value)loi_.push(['trinhdo', 'Bạn chọn mức hiện tại của mình']);
+
+    if(loi_.length){
+      loi_.forEach(function(x){ markBad(x[0], x[1]); });
+      // đưa ô sai đầu tiên ra giữa màn hình, KHÔNG focus nên bàn phím không bật
+      var first = document.getElementById(loi_[0][0]);
+      var r = first.getBoundingClientRect();
+      window.scrollTo({
+        top: Math.max(0, window.scrollY + r.top - window.innerHeight/2 + r.height/2),
+        behavior: 'smooth'
+      });
+      msg.className = 'form-msg';   // ẩn dòng thông báo chung, đã có báo tại chỗ
       return;
     }
 
